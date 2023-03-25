@@ -15,6 +15,8 @@
 4. **Generovanie prvej populácie** (rodičov): prebieha náhodne, avšak je obmedzená heuristikou, napr. kategória sa vyskytuje iba raz, sezónnosť je prepojená s počasím/dátumom, zakázané kombinácie (koženné nohavice a kvetinový sveter, plesové šaty a tenisky, tepláky a sako). Následne je vypočítaná ‘fitness’ každého vygenerovaného outfitu. Uživateľovi je následne ponúknutý určitý počet (napr. 10) outfitov s najväčším fitness.
 5. **Ohodnotenie a vznik potomkov**: na základe uživateľovho ohodnotenia sa upraví fitness outfitu (pretože nie každý outfit, ktorého fitness bola vysoká, sa bude aj reálne uživateľovi páčiť). Vyselektujú sa outfity s najvyšším hodnotením a aplikujú sa genetické operátory - kríženie a mutácia, ktorej cieľom je zlepšenie rôznorodosti. Vznikne nová generácia, ktorá bude uživateľovi znova ponúknutá. Generovanie novej generácie sa opakuje po obmedzenom počte uživateľom ohodnotených outfitov (1 pre úspešný outfit, 0 pre neúspešný outfit)
 
+zdroj: [Martin Pilát: Evoluční algoritmy - úvod](https://martinpilat.com/cs/prirodou-inspirovane-algoritmy/evolucni-algoritmy-uvod)
+
 #### [O’Donovan: Color Compatibility From Large Datasets](http://www.dgp.toronto.edu/~donovan/color/colorcomp.pdf) ####
 
 
