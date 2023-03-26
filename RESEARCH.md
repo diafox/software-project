@@ -55,7 +55,7 @@ zdroj: [Martin Pilát: Evoluční algoritmy - úvod](https://martinpilat.com/cs/
 
 #### [[4] Learning type-aware embeddings for fashion compatibility](https://openaccess.thecvf.com/content_ECCV_2018/papers/Mariya_Vasileva_Learning_Type-Aware_Embeddings_ECCV_2018_paper.pdf) ####
 
-#### [[5] Machine Learning Models with Optimization for Clothing Recommendation from Personal Wardrobe](https://ieeexplore.ieee.org/abstract/document/9091777) ####
+#### [[5] Machine Learning Models with Optimization for Clothing Recommendation from Personal Wardrobe](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9091777) ####
 - porovnanie rôznych modelov pre doporučovanie _valid, appropriate and relevant_ outfitov pre uživateľa na základe počasia, času a dňa v týždni. V skratke, generujú ideálne kombinácie (ale stručné, napr. tielko + džíny) podľa týchto parametrov, až potom zisťujú či sa takéto kombinácie v uživateľovom šatníku nachádzajú
 - aim to find the optimal way of recommending clothing combinations from the user’s wardrobe
 - the idea was to run different machine learning algorithms on this data to learn what category of clothing would be appropriate for a particular day and time
