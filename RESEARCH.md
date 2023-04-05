@@ -23,6 +23,7 @@ zdroj: [Martin Pilát: Evoluční algoritmy - úvod](https://martinpilat.com/cs/
 
 ## Získavanie atribútov z fotografií uživateľa ##
 #### [[2] MMFashion: An Open-Source Toolbox for Visual Fashion Analysis](https://arxiv.org/pdf/2005.08847.pdf) ####
+- [github](https://github.com/open-mmlab/mmfashion)
 - nástroj pre získavanie atribútov aj z 'in the wild' fotiek
 - comprehensive, flexible and user-friendly open-source visual fashion analysis toolbox **based on PyTorch **
 - backbone is the part that transforms an image to feature maps, such as a ResNet-50 without the last fully connected layer
