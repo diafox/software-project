@@ -1,9 +1,11 @@
 ## Generovanie outfitov pomocou evolučného algoritmu ##
-1. **Definovanie cieľov algoritmu** (čo chceme optimalizovať): 
-- _personalizácia_ - ako veľmi vygenerovaný outfit zodpovedá uživateľovým preferenciám, 
-- _rozmanitosť_ - či je outfit dostatočne rozmanitý, 
-- _kompatibilita_ - či má outfit koherentný štýl a farebnosť (môžeme využiť O’Donovan-ov Color Compatibility Predictor [1]), 
-- _sezónnosť_ - či je outfit vhodný pre konkrétnu sezónu (ročné obdobie / počasie).
+1. **Definovanie cieľov algoritmu** (objectives): 
+- _kompatibilita_ - či má outfit koherentný štýl a farebnosť (môžeme využiť O’Donovan-ov Color Compatibility Predictor [1] alebo MMFashion: Fashion Compatibility and Recommendation [2], ktorý hodnotí outfit z fotiek), 
+- _personalizácia_ - ako veľmi vygenerovaný outfit zodpovedá uživateľovým preferenciám; problém: ako merať?
+- _rozmanitosť_ - či je outfit dostatočne rozmanitý; otázka: má to zmysel, ak niektorí uživatelia uprednostňujú menej rozmanité outfity?
+- _sezónnosť_ - či je outfit vhodný pre konkrétnu sezónu (ročné obdobie / počasie); budeme sa pozerať na sezónnosť jednotlivých kúskov outfitu a ako veľmi sa zhodujú s aktuálnym obdobím
+- _novelty_ - musíme zabezpečiť, aby sme využívali aj kúsky, ktoré boli čerstvo pridané do šatníka; chceme merať koľko krát sme už jeden kúsok využili a pri generovaní navrhovať veci, ktoré majú nízke číslo využitia (??)
+
 2. **Reprezentácia outfitu**: každý outfit musí byť reprezentovateľný nejakou postupnosťou ‘kúskov’. Jednotlivé oblečenie je reprezentované pomocou vektorov _[kategória, sub-kategória, farba, potisk, materiál, štýl, sezónnosť]_. Každý outfit je reprezentovaný maticou, ktorá sa skladá z týchto vektorov. Každá kategória sa môže vyskytovať iba raz.
 - Kategória: vršok 1. vrstva, vršok 2. vrstva, spodok, full-body oblečenie, kabelka, doplnky
 - Sub-kategória: tielko, blúzka, rolák, mikina, sveter, bunda, džíny, šortky, sukňa, šaty, overal…
@@ -11,12 +13,20 @@
 - Materiál: šifón, bavlna, denim, čipka, koža, satén, flaner, flitrované, úplet…
 - Štýl: elegantné, plážové, casual, business…
 - Sezónnosť: letné, zimné, celoročné, prechodné
-3. **Definovanie fitness funkcie**: fitness funkcia vyhodnocuje kvalitu každého outfitu na základe definovaných cieľov. V tomto prípade by to bol napríklad priemer jednotlivých cieľových ohodnotení. Môžeme využiť MMFAshion a jeho časť Fashion Compatibility and Recommendation [2].
-Jedným z možných prístupov je využitie Random Forest / Decision Tree na predpovedanie vhodnosti každého kúsku oblečenia pre konkrétny outfit a potom použiť evolučný algoritmus na hľadanie najlepších kombinácií kúskov na základe predpovedaného skóre.
-5. **Generovanie prvej populácie** (rodičov): prebieha náhodne, avšak je obmedzená heuristikou, napr. kategória sa vyskytuje iba raz, sezónnosť je prepojená s počasím/dátumom, zakázané kombinácie (koženné nohavice a kvetinový sveter, plesové šaty a tenisky, tepláky a sako). Následne je vypočítaná ‘fitness’ každého vygenerovaného outfitu. Uživateľovi je následne ponúknutý určitý počet (napr. 10) outfitov s najväčším fitness.
-6. **Ohodnotenie a vznik potomkov**: na základe uživateľovho ohodnotenia sa upraví fitness outfitu (pretože nie každý outfit, ktorého fitness bola vysoká, sa bude aj reálne uživateľovi páčiť). Vyselektujú sa outfity s najvyšším hodnotením a aplikujú sa genetické operátory - kríženie a mutácia, ktorej cieľom je zlepšenie rôznorodosti. Vznikne nová generácia, ktorá bude uživateľovi znova ponúknutá. Generovanie novej generácie sa opakuje po obmedzenom počte uživateľom ohodnotených outfitov (páči sa mi použitie Weighted Precision v [5])
 
-zdroj: [Martin Pilát: Evoluční algoritmy - úvod](https://martinpilat.com/cs/prirodou-inspirovane-algoritmy/evolucni-algoritmy-uvod)
+3. **Definovanie fitness funkcie**: fitness funkcia vyhodnocuje kvalitu každého outfitu na základe definovaných cieľov. 
+> dopísať
+Keďže neexistuje jedno najlepšie riešenie, ale viacero rôznych s rôznymi skóre pre každý parameter, využijeme multi-objective EA. Musíme zvoliť správny spôsob hľadania balancu v solution space, pretože **ak bude outfit dobrý v jednej metrike ale nie v ostatných, tak ho nechcem nutne vylúčiť**. 
+> Pareto dominance / crowding distance ?? zistiť, dopísať
+
+4. **Generovanie prvej populácie** (rodičov): prebieha náhodne, avšak je obmedzené nejakými pravidlami, napr. kategória sa vyskytuje iba raz, sezónnosť je prepojená s počasím/dátumom, zakázané kombinácie (koženné nohavice a kvetinový sveter, plesové šaty a tenisky, tepláky a sako). Následne je vypočítaná ‘fitness’ každého vygenerovaného outfitu.
+
+5. **Ohodnotenie a vznik potomkov**: Vyselektujú sa outfity s najvyšším hodnotením a aplikujú sa genetické operátory - kríženie a mutácia (pri mutácii môžeme využívať kúsky s nízkym číslom využitia, aby sa zachovala novelty), ktorej cieľom je zlepšenie rôznorodosti. Vznikne nová generácia, ktorá bude uživateľovi znova ponúknutá. Generovanie novej generácie sa opakuje po obmedzenom počte uživateľom ohodnotených outfitov (páči sa mi použitie Weighted Precision v [5])
+> Môže EA bežať non-stop? Potrebujeme vyriešiť otázku po kolkých vygenerovaných generáciách budeme outfity uživateľovi navrhovať. Môžeme ukazovať každú generovanú generáciu a zakomponovať user feedback? 
+
+zdroj: 
+- [Dr. Shahim Rostami: Evolutionary Algorithms](https://www.youtube.com/watch?v=L--IxUH4fac&list=PLwWiU_ClpuYpC1tEY47k_-CTzDKz1UYIN&index=1)
+- [Martin Pilát: Evoluční algoritmy - úvod](https://martinpilat.com/cs/prirodou-inspirovane-algoritmy/evolucni-algoritmy-uvod)
 
 #### [[1] O’Donovan: Color Compatibility From Large Datasets](http://www.dgp.toronto.edu/~donovan/color/colorcomp.pdf) ####
 
