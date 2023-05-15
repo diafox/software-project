@@ -10,15 +10,16 @@
 
 **Název projektu:** 
 - Módní asistent s využitím doporučovacích systémů
-- Content-based doporučování módních outfitů
-- Nástroj pro doporučování outfitů
-- Doporučovací systém pro tvorbu outfitů
+- Generátor outfitov na základe uživateľských preferencii
+- Nástroj pro doporučovanie outfitov (do vrecka)
+
 
 ## 1 Motivace ##
-Výběr správného outfitu může být pro některé každodenním náročným úkolem. V souvislosti s tímto problémem, doporučovací systémy se stávají stále populárnější v módním průmyslu, především při internetovém nakupování. Na základě předešlých nákupů, historie vyhledávání či celkových hodnocení je tak uživatelům navržena přizpůsobená nabídka dalšího zboží.
+V dnešnom uponáhľanom svete môže byť hľadanie dokonalého oblečenia či už ráno alebo večer časovo náročné, najmä ak máte veľký šatník. Nebolo by skvelé, keby ste mohli mať inteligentný program, ktorý by vám mohol vygenerovať a navrhúť vhodný outfit na základe vášho osobného štýlu, počasia a príležitosti?
 
-Doporučovací systém pro tvorbu módních outfitů je nástroj, který dokáže lidem ušetřit čas a vytvářet outfity na základě uživatelského stylu a preferencí.
-Cílem tohoto projektu je využití content-based doporučovacích systémů a algoritmů strojového učení k rozvoji efektivnějšího a personalizovaného přístupu při doporučování trendy outfitů na uživatelské úrovni.
+V souvislosti s týmto problémom, doporučovacie systémy se stávajú stále populárnejšie v módnom priemysle, predovšetkým pri internetovom nakupovaní. Na základe predošlých nákupov, histórie vyhľadávania či celkových hodnotení je tak uživateľom navrhnutá prispôsobená ponuka ďalšieho tovaru. My sme sa rozhodli ísť o čosi personalizovanejším smerom a navrhovať uživateľom outfity poskladané z toho, čo ponúka ich vlastný šatník, bez využitia komerčného účelu. 
+
+Doporučovací systém pre tvorbu módnych outfitov je nástroj, ktorý dokáže ľuďom ušetriť čas a vytvárať outfity na základe uživateľovho štýlu a preferencii. 
 
 
 ## 2 Popis Projektu ##
