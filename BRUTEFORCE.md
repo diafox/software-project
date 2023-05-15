@@ -1,4 +1,4 @@
-# Generovanie outfitov pomocou hrubej sily #
+## Generovanie outfitov pomocou hrubej sily ##
 
 Hrubá sila je najzákladnejšia metóda riešenia problémov, ktorá využíva testovanie všetkých možných kombinácii pre nájdenie jedného či viacerých správnych riešenie. 
 
